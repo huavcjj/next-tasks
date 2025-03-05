@@ -20,7 +20,7 @@ export default function NavLinks() {
   const pathname = usePathname();
 
   return (
-    <ul className="space-y-3">
+    <ul className="space-y-2">
       {links.map((link) => {
         const LinkIcon = link.icon;
         const isActive = pathname === link.href;
@@ -30,16 +30,15 @@ export default function NavLinks() {
             key={link.name}
             href={link.href}
             className={clsx(
-              "group flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-300 shadow-sm",
+              "group flex items-center gap-3 px-4 py-2 rounded-md transition-all duration-300 text-white",
               {
-                "bg-gray-500 text-white shadow-md scale-105": isActive,
-                "hover:bg-gray-400 hover:shadow-md hover:scale-105 hover:text-black":
-                  !isActive,
+                "bg-black shadow-md": isActive,
+                "hover:bg-gray-800": !isActive,
               },
             )}
           >
-            <LinkIcon className="w-6 h-6 transition-all duration-200 text-gray-700 group-hover:text-black" />
-            <span>{link.name}</span>
+            <LinkIcon className="w-5 h-5 text-white" />
+            <span className="text-sm font-medium">{link.name}</span>
           </Link>
         );
       })}

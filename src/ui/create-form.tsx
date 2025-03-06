@@ -1,6 +1,15 @@
+"use client";
+
+import { createTask, FormState } from "@/lib/action";
+import { useActionState } from "react";
+import { useFormStatus } from "react-dom";
+
 export default function CreateTaskForm() {
+  const initialState: FormState = { error: "" };
+  const [state, formAction] = useActionState(createTask, initialState);
+
   return (
-    <form action="" className="space-y-6">
+    <form action={formAction} className="space-y-6">
       <div>
         <label htmlFor="title" className="block text-white font-semibold mb-1">
           Title
@@ -48,12 +57,29 @@ export default function CreateTaskForm() {
         />
       </div>
 
-      <button
-        type="submit"
-        className="w-full bg-white text-black py-3 rounded-lg font-semibold text-lg hover:bg-gray-300 transition"
-      >
-        Create
-      </button>
+      <SubmitButton />
+
+      {state.error && (
+        <p className="text-red-500 font-semibold">{state.error}</p>
+      )}
     </form>
   );
 }
+
+const SubmitButton = () => {
+  const { pending } = useFormStatus();
+
+  return (
+    <button
+      type="submit"
+      disabled={pending}
+      className={`w-full py-3 rounded-lg font-semibold text-lg transition ${
+        pending
+          ? "bg-gray-400 cursor-not-allowed"
+          : "bg-white text-black hover:bg-gray-300"
+      }`}
+    >
+      {pending ? "Creating..." : "Create"}
+    </button>
+  );
+};

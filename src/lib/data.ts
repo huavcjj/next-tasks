@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import { TaskDocument } from "@/lib/defintions";
 
 export async function connectDb() {
   try {
@@ -12,5 +13,23 @@ export async function connectDb() {
   } catch (error) {
     console.error("❌ MongoDB connection error:", error);
     throw new Error("Failed to connect to MongoDB");
+  }
+}
+
+export async function fetchTasks(): Promise<TaskDocument[]> {
+  try {
+    const response = await fetch(`${process.env.API_URL}/tasks`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      cache: "no-store",
+    });
+
+    const data = await response.json();
+    return data.tasks as TaskDocument[];
+  } catch (error) {
+    console.error("Error fetching tasks:", error);
+    throw new Error("Failed to fetch tasks");
   }
 }

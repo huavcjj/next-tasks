@@ -20,9 +20,8 @@ export async function createTask(state: FormState, formData: FormData) {
     await connectDb();
     await TaskModel.create(newTask);
   } catch (error) {
-    state.error = "Failed to create task.";
-    console.log("Error creating task:", error);
-    return state;
+    console.error("Error creating task:", error);
+    return { error: "Failed to create task" };
   }
 
   redirect("/tasks");

@@ -1,5 +1,7 @@
-import TaskCard from "@/ui/task-card";
 import { TaskCreateButton } from "@/ui/task-buttons";
+import { Suspense } from "react";
+import TaskSkeleton from "@/ui/skeletons";
+import { TaskList } from "@/ui/task-list";
 
 export default function Page() {
   return (
@@ -9,10 +11,9 @@ export default function Page() {
         <TaskCreateButton />
       </header>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-4 sm:p-6">
-        <TaskCard title="Task 1" description="This is the first task." />
-        <TaskCard title="Task 2" description="This is the second task." />
-      </div>
+      <Suspense fallback={<TaskSkeleton count={3} />}>
+        <TaskList />
+      </Suspense>
     </div>
   );
 }

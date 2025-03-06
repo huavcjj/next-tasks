@@ -33,3 +33,21 @@ export async function fetchTasks(): Promise<TaskDocument[]> {
     throw new Error("Failed to fetch tasks");
   }
 }
+
+export async function fetchTaskById(id: string): Promise<TaskDocument> {
+  try {
+    const response = await fetch(`${process.env.API_URL}/tasks/${id}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      cache: "no-store",
+    });
+
+    const data = await response.json();
+    return data.task as TaskDocument;
+  } catch (error) {
+    console.error("Error fetching task by ID:", error);
+    throw new Error("Failed to fetch task");
+  }
+}

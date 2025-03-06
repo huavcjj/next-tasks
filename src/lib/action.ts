@@ -26,3 +26,24 @@ export async function createTask(state: FormState, formData: FormData) {
 
   redirect("/tasks");
 }
+
+export async function updateTask(state: FormState, formData: FormData) {
+  const id = formData.get("id") as string;
+
+  const updatedTask: Task = {
+    title: formData.get("title") as string,
+    description: formData.get("description") as string,
+    dueDate: formData.get("dueDate") as string,
+    isCompleted: formData.get("isCompleted")?.toString() === "true",
+  };
+
+  try {
+    await connectDb();
+    await TaskModel.findByIdAndUpdate(id, updatedTask);
+  } catch (error) {
+    console.error("Error updating task:", error);
+    return { error: "Failed to update task" };
+  }
+
+  redirect("/tasks");
+}

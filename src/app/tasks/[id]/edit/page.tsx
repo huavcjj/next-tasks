@@ -1,4 +1,4 @@
-import EditTaskForm from "@/app/ui/edit-form";
+import EditTaskForm from "@/ui/edit-form";
 
 export default function Page() {
   return (

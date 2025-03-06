@@ -1,4 +1,4 @@
-import CreateTaskForm from "@/app/ui/create-form";
+import CreateTaskForm from "@/ui/create-form";
 
 export default function Page() {
   return (

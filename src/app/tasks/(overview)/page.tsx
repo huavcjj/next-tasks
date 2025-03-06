@@ -1,5 +1,5 @@
-import TaskCard from "@/app/ui/task-card";
-import { TaskCreateButton } from "@/app/ui/task-buttons";
+import TaskCard from "@/ui/task-card";
+import { TaskCreateButton } from "@/ui/task-buttons";
 
 export default function Page() {
   return (

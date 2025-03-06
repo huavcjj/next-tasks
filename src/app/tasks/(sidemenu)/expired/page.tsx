@@ -1,4 +1,4 @@
-import TaskCard from "@/app/ui/task-card";
+import TaskCard from "@/ui/task-card";
 
 export default function Page() {
   return (

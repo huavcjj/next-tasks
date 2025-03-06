@@ -1,4 +1,4 @@
-import { TaskDeleteButton, TaskEditButton } from "@/app/ui/task-buttons";
+import { TaskDeleteButton, TaskEditButton } from "@/ui/task-buttons";
 
 export default function TaskCard({
   title,

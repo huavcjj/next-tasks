@@ -1,5 +1,5 @@
 import React from "react";
-import SideMenu from "@/app/ui/side-menu";
+import SideMenu from "@/ui/side-menu";
 
 export default function Layout({
   children,

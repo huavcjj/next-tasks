@@ -1,30 +1,16 @@
 "use client";
 
 import { deleteTask, FormState } from "@/lib/action";
-import React, { startTransition, useActionState } from "react";
+import React, { useActionState } from "react";
 import { TrashIcon } from "@heroicons/react/24/outline";
 
-export function TaskDeleteButton({
-  id,
-  onOptimisticDelete,
-}: {
-  id: string;
-  onOptimisticDelete: () => void;
-}) {
+export function TaskDeleteButton({ id }: { id: string }) {
   const initialState: FormState = { error: "" };
   const deleteTaskWithId = deleteTask.bind(null, initialState, id);
   const [state, formAction] = useActionState(deleteTaskWithId, initialState);
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    startTransition(() => {
-      onOptimisticDelete();
-      formAction();
-    });
-  };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form action={formAction}>
       <button
         type="submit"
         className="flex items-center justify-center w-9 h-9 bg-red-600 text-white rounded-md shadow-md hover:bg-red-700 transition"

@@ -1,20 +1,18 @@
 import { TaskEditButton } from "@/ui/task-buttons";
 import { TaskDeleteButton } from "@/ui/delete-task";
 
-export default function TaskCard({
+export default async function TaskCard({
   id,
   title,
   description,
   dueDate,
   isCompleted,
-  onOptimisticDelete,
 }: {
   id: string;
   title: string;
   description: string;
   dueDate: string;
   isCompleted: boolean;
-  onOptimisticDelete: () => void;
 }) {
   return (
     <div className="bg-white p-5 rounded-lg shadow-md border border-gray-300 flex flex-col justify-between w-full h-48">
@@ -36,7 +34,7 @@ export default function TaskCard({
 
         <div className="flex gap-2">
           <TaskEditButton id={id} />
-          <TaskDeleteButton id={id} onOptimisticDelete={onOptimisticDelete} />
+          <TaskDeleteButton id={id} />
         </div>
       </div>
     </div>

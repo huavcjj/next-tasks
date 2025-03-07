@@ -8,8 +8,8 @@ export async function GET(
 ) {
   try {
     await connectDb();
-
-    const task = await TaskModel.findById(params.id);
+    const { id } = params;
+    const task = await TaskModel.findById(id);
 
     if (!task) {
       return NextResponse.json(

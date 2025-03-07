@@ -6,7 +6,7 @@ import { useActionState } from "react";
 
 export default function EditTaskForm({ task }: { task: TaskDocument }) {
   const initialState: FormState = { error: "" };
-  const [state, formAction] = useActionState(updateTask, initialState);
+  const [state, formAction, pending] = useActionState(updateTask, initialState);
 
   return (
     <form action={formAction} className="space-y-6">
@@ -100,9 +100,14 @@ export default function EditTaskForm({ task }: { task: TaskDocument }) {
 
       <button
         type="submit"
-        className="w-full bg-white text-black py-3 rounded-lg font-semibold text-lg hover:bg-gray-300 transition"
+        disabled={pending}
+        className={`w-full py-3 rounded-lg font-semibold text-lg transition ${
+          pending
+            ? "bg-gray-400 text-gray-700 cursor-not-allowed"
+            : "bg-white text-black hover:bg-gray-300"
+        }`}
       >
-        Edit
+        {pending ? "Editing..." : "Edit"}
       </button>
     </form>
   );

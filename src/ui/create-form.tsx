@@ -2,11 +2,10 @@
 
 import { createTask, FormState } from "@/lib/action";
 import { useActionState } from "react";
-import { useFormStatus } from "react-dom";
 
 export default function CreateTaskForm() {
   const initialState: FormState = { error: "" };
-  const [state, formAction] = useActionState(createTask, initialState);
+  const [state, formAction, pending] = useActionState(createTask, initialState);
 
   return (
     <form action={formAction} className="space-y-6">
@@ -57,7 +56,17 @@ export default function CreateTaskForm() {
         />
       </div>
 
-      <SubmitButton />
+      <button
+        type="submit"
+        disabled={pending}
+        className={`w-full py-3 rounded-lg font-semibold text-lg transition ${
+          pending
+            ? "bg-gray-400 cursor-not-allowed"
+            : "bg-white text-black hover:bg-gray-300"
+        }`}
+      >
+        {pending ? "Creating..." : "Create"}
+      </button>
 
       {state.error && (
         <p className="text-red-500 font-semibold">{state.error}</p>
@@ -65,21 +74,3 @@ export default function CreateTaskForm() {
     </form>
   );
 }
-
-const SubmitButton = () => {
-  const { pending } = useFormStatus();
-
-  return (
-    <button
-      type="submit"
-      disabled={pending}
-      className={`w-full py-3 rounded-lg font-semibold text-lg transition ${
-        pending
-          ? "bg-gray-400 cursor-not-allowed"
-          : "bg-white text-black hover:bg-gray-300"
-      }`}
-    >
-      {pending ? "Creating..." : "Create"}
-    </button>
-  );
-};

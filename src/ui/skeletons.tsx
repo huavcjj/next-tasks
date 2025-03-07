@@ -15,7 +15,7 @@ export default function TaskSkeleton({ count }: TaskSkeletonProps) {
           </div>
 
           <div className="h-4 bg-gray-400 rounded w-full mt-2"></div>
-          <div className="h-4 bg-gray-400 rounded w-5/6 mt-2"></div>
+          <div className="h-4 bg-gray-400 rounded w-full mt-2"></div>
 
           <div className="flex justify-between items-center mt-4">
             <div className="h-6 w-20 bg-gray-400 rounded"></div>

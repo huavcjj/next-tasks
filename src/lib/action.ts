@@ -1,6 +1,6 @@
 "use server";
 
-import { Task, TaskModel } from "@/lib/defintions";
+import { Task, TaskModel } from "@/lib/definitions";
 import { connectDb } from "@/lib/data";
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";

@@ -1,6 +1,6 @@
 "use client";
 
-import { TaskDocument } from "@/lib/defintions";
+import { TaskDocument } from "@/lib/definitions";
 import { FormState, updateTask } from "@/lib/action";
 import { useActionState } from "react";
 

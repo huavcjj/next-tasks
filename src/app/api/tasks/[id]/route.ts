@@ -1,8 +1,11 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { connectDb } from "@/lib/data";
-import { TaskModel } from "@/lib/defintions";
+import { TaskModel } from "@/lib/definitions";
 
-export async function GET(_: Request, { params }: { params: { id: string } }) {
+export async function GET(
+  _: NextRequest,
+  { params }: { params: { id?: string } },
+) {
   try {
     await connectDb();
 

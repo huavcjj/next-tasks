@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { TaskDocument } from "@/lib/defintions";
+import { TaskDocument } from "@/lib/definitions";
 
 export async function connectDb() {
   try {

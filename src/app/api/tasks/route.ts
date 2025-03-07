@@ -1,4 +1,4 @@
-import { TaskModel } from "@/lib/defintions";
+import { TaskModel } from "@/lib/definitions";
 import { connectDb } from "@/lib/data";
 import { NextResponse } from "next/server";
 

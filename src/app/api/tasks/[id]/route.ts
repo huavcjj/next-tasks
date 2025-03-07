@@ -2,11 +2,17 @@ import { NextRequest, NextResponse } from "next/server";
 import { connectDb } from "@/lib/data";
 import { TaskModel } from "@/lib/defintions";
 
-export async function GET(_: NextRequest, context: { params: { id: string } }) {
+interface Context {
+  params: {
+    id: string;
+  };
+}
+
+export async function GET(_: NextRequest, { params }: Context) {
   try {
     await connectDb();
-    const { id } = context.params;
-    const task = await TaskModel.findById(id);
+
+    const task = await TaskModel.findById(params.id);
 
     if (!task) {
       return NextResponse.json(

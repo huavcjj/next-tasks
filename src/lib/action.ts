@@ -53,10 +53,7 @@ export async function updateTask(state: FormState, formData: FormData) {
 export async function deleteTask(state: FormState, id: string) {
   try {
     await connectDb();
-    const task = await TaskModel.deleteOne({ _id: id });
-    if (!task) {
-      return { error: "Task not found" };
-    }
+    await TaskModel.deleteOne({ _id: id });
   } catch (error) {
     console.error("Error deleting task:", error);
     return { error: "Failed to delete task" };

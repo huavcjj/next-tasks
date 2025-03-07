@@ -7,12 +7,14 @@ export default function TaskCard({
   description,
   dueDate,
   isCompleted,
+  onOptimisticDelete,
 }: {
   id: string;
   title: string;
   description: string;
   dueDate: string;
   isCompleted: boolean;
+  onOptimisticDelete: () => void;
 }) {
   return (
     <div className="bg-white p-5 rounded-lg shadow-md border border-gray-300 flex flex-col justify-between w-full h-48">
@@ -34,7 +36,7 @@ export default function TaskCard({
 
         <div className="flex gap-2">
           <TaskEditButton id={id} />
-          <TaskDeleteButton id={id} />
+          <TaskDeleteButton id={id} onOptimisticDelete={onOptimisticDelete} />
         </div>
       </div>
     </div>

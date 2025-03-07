@@ -1,10 +1,15 @@
+"use client";
+
 import TaskCard from "@/ui/task-card";
 import { TaskDocument } from "@/lib/definitions";
-import { fetchTasks } from "@/lib/data";
+import { useOptimistic } from "react";
 
-export async function TaskList() {
-  const tasks: TaskDocument[] = await fetchTasks();
+export function TaskList({ initialTasks }: { initialTasks: TaskDocument[] }) {
+  const [tasks, setOptimisticTasks] = useOptimistic(initialTasks);
 
+  const handleOptimisticDelete = (id: string) => {
+    setOptimisticTasks(tasks.filter((task) => task._id !== id));
+  };
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-4 sm:p-6">
       {tasks.map((task: TaskDocument) => (
@@ -15,15 +20,22 @@ export async function TaskList() {
           dueDate={task.dueDate}
           isCompleted={task.isCompleted}
           description={task.description}
+          onOptimisticDelete={() => handleOptimisticDelete(task._id)}
         />
       ))}
     </div>
   );
 }
 
-export async function TaskListIsCompleted() {
-  const tasks: TaskDocument[] = await fetchTasks();
-
+export function TaskListIsCompleted({
+  initialTasks,
+}: {
+  initialTasks: TaskDocument[];
+}) {
+  const [tasks, setOptimisticTasks] = useOptimistic(initialTasks);
+  const handleOptimisticDelete = (id: string) => {
+    setOptimisticTasks(tasks.filter((task) => task._id !== id));
+  };
   const filteredTasks = tasks.filter((task) => task.isCompleted);
 
   return (
@@ -36,15 +48,22 @@ export async function TaskListIsCompleted() {
           dueDate={task.dueDate}
           isCompleted={task.isCompleted}
           description={task.description}
+          onOptimisticDelete={() => handleOptimisticDelete(task._id)}
         />
       ))}
     </div>
   );
 }
 
-export async function TaskListNotCompleted() {
-  const tasks: TaskDocument[] = await fetchTasks();
-
+export function TaskListNotCompleted({
+  initialTasks,
+}: {
+  initialTasks: TaskDocument[];
+}) {
+  const [tasks, setOptimisticTasks] = useOptimistic(initialTasks);
+  const handleOptimisticDelete = (id: string) => {
+    setOptimisticTasks(tasks.filter((task) => task._id !== id));
+  };
   const filteredTasks = tasks.filter((task) => !task.isCompleted);
 
   return (
@@ -57,6 +76,7 @@ export async function TaskListNotCompleted() {
           dueDate={task.dueDate}
           isCompleted={task.isCompleted}
           description={task.description}
+          onOptimisticDelete={() => handleOptimisticDelete(task._id)}
         />
       ))}
     </div>

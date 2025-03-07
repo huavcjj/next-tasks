@@ -3,6 +3,7 @@
 import { Task, TaskModel } from "@/lib/defintions";
 import { connectDb } from "@/lib/data";
 import { redirect } from "next/navigation";
+import { revalidatePath } from "next/cache";
 
 export interface FormState {
   error: string;
@@ -45,5 +46,21 @@ export async function updateTask(state: FormState, formData: FormData) {
     return { error: "Failed to update task" };
   }
 
+  revalidatePath("/tasks");
   redirect("/tasks");
+}
+
+export async function deleteTask(state: FormState, id: string) {
+  try {
+    await connectDb();
+    const task = await TaskModel.deleteOne({ _id: id });
+    if (!task) {
+      return { error: "Task not found" };
+    }
+  } catch (error) {
+    console.error("Error deleting task:", error);
+    return { error: "Failed to delete task" };
+  }
+
+  revalidatePath("/tasks");
 }

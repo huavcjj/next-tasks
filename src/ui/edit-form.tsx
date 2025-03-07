@@ -7,6 +7,7 @@ import { useActionState } from "react";
 export default function EditTaskForm({ task }: { task: TaskDocument }) {
   const initialState: FormState = { error: "" };
   const [state, formAction] = useActionState(updateTask, initialState);
+
   return (
     <form action={formAction} className="space-y-6">
       <input type="hidden" name="id" value={task._id} />
@@ -95,7 +96,7 @@ export default function EditTaskForm({ task }: { task: TaskDocument }) {
         </div>
       </div>
 
-      {state.error && <p className="text-red-500">{state.error}</p>}
+      {state?.error && <p className="text-red-500">{state.error}</p>}
 
       <button
         type="submit"

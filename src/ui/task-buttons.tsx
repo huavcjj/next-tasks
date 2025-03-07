@@ -1,9 +1,5 @@
 import Link from "next/link";
-import {
-  PencilSquareIcon,
-  PlusIcon,
-  TrashIcon,
-} from "@heroicons/react/24/outline"; // 編集ボタン
+import { PencilSquareIcon, PlusIcon } from "@heroicons/react/24/outline";
 
 export function TaskEditButton({ id }: { id: string }) {
   return (
@@ -12,19 +8,6 @@ export function TaskEditButton({ id }: { id: string }) {
         <PencilSquareIcon className="w-4 h-4" />
       </button>
     </Link>
-  );
-}
-
-export function TaskDeleteButton({ id }: { id: string }) {
-  return (
-    <form action="">
-      <button
-        type="submit"
-        className="flex items-center justify-center w-9 h-9 bg-red-600 text-white rounded-md shadow-md hover:bg-red-700 transition"
-      >
-        <TrashIcon className="w-4 h-4" />
-      </button>
-    </form>
   );
 }
 

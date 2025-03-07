@@ -4,9 +4,6 @@ const nextConfig: NextConfig = {
   compiler: {
     removeConsole: true,
   },
-  compilerOptions: {
-    skipLibCheck: true,
-  },
   typescript: {
     ignoreBuildErrors: true,
   },

@@ -1,6 +1,6 @@
-import { fetchTasks } from "@/lib/data";
 import TaskCard from "@/ui/task-card";
 import { TaskDocument } from "@/lib/definitions";
+import { fetchTasks } from "@/lib/data";
 
 export async function TaskList() {
   const tasks: TaskDocument[] = await fetchTasks();

@@ -3,7 +3,7 @@ import { Suspense } from "react";
 import TaskSkeleton from "@/ui/skeletons";
 import { TaskListNotCompleted } from "@/ui/task-list";
 
-export default function Page() {
+export default async function Page() {
   return (
     <div className="max-w-5xl mx-auto p-8">
       <header className="flex justify-between items-center border-b border-gray-200 pb-4 mb-6">

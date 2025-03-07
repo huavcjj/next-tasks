@@ -2,10 +2,10 @@ import { NextRequest, NextResponse } from "next/server";
 import { connectDb } from "@/lib/data";
 import { TaskModel } from "@/lib/defintions";
 
-export async function GET(_: NextRequest, props: { params: { id: string } }) {
+export async function GET(_: NextRequest, context: { params: { id: string } }) {
   try {
     await connectDb();
-    const { id } = props.params;
+    const { id } = context.params;
     const task = await TaskModel.findById(id);
 
     if (!task) {

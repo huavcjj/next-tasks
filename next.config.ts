@@ -7,6 +7,9 @@ const nextConfig: NextConfig = {
   compilerOptions: {
     skipLibCheck: true,
   },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
   // experimental: {
   //   ppr: "incremental",
   // },

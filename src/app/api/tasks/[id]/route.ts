@@ -4,7 +4,7 @@ import { TaskModel } from "@/lib/definitions";
 
 export async function GET(
   _: NextRequest,
-  { params }: { params: { id?: string } },
+  { params }: { params: { id: string } },
 ) {
   try {
     await connectDb();

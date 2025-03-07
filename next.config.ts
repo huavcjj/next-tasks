@@ -4,6 +4,9 @@ const nextConfig: NextConfig = {
   compiler: {
     removeConsole: true,
   },
+  compilerOptions: {
+    skipLibCheck: true,
+  },
   // experimental: {
   //   ppr: "incremental",
   // },

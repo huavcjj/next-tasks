@@ -13,7 +13,7 @@ export default function CreateTaskForm() {
   return (
     <form action={formAction} className="space-y-6">
       <div>
-        <label htmlFor="title" className="block text-white font-semibold mb-1">
+        <label htmlFor="title" className="block text-black font-semibold mb-1">
           Title
         </label>
         <input
@@ -29,7 +29,7 @@ export default function CreateTaskForm() {
       <div>
         <label
           htmlFor="description"
-          className="block text-white font-semibold mb-1"
+          className="block text-black font-semibold mb-1"
         >
           Description
         </label>
@@ -46,7 +46,7 @@ export default function CreateTaskForm() {
       <div>
         <label
           htmlFor="dueDate"
-          className="block text-white font-semibold mb-1"
+          className="block text-black font-semibold mb-1"
         >
           Due Date
         </label>

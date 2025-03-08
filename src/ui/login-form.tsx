@@ -5,7 +5,10 @@ import { FormState, loginAction } from "@/lib/action";
 
 export default function LoginForm() {
   const initialState: FormState = { error: "" };
-  const [state, formAction] = useActionState(loginAction, initialState);
+  const [state, formAction, pending] = useActionState(
+    loginAction,
+    initialState,
+  );
 
   return (
     <form action={formAction} className="space-y-4">
@@ -41,9 +44,14 @@ export default function LoginForm() {
 
       <button
         type="submit"
-        className="w-full bg-black text-white py-3 rounded-lg font-semibold text-lg hover:bg-gray-700 transition"
+        disabled={pending}
+        className={`w-full py-3 rounded-lg font-semibold text-lg transition ${
+          pending
+            ? "bg-gray-400 text-white cursor-not-allowed"
+            : "bg-black text-white hover:bg-gray-700"
+        }`}
       >
-        Login
+        {pending ? "Logging in..." : "Login"}
       </button>
     </form>
   );

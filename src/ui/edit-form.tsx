@@ -16,7 +16,7 @@ export default function EditTaskForm({ task }: { task: TaskDocument }) {
       <input type="hidden" name="id" value={task._id} />
 
       <div>
-        <label htmlFor="title" className="block text-white font-semibold mb-1">
+        <label htmlFor="title" className="block text-black font-semibold mb-1">
           Title
         </label>
         <input
@@ -33,7 +33,7 @@ export default function EditTaskForm({ task }: { task: TaskDocument }) {
       <div>
         <label
           htmlFor="description"
-          className="block text-white font-semibold mb-1"
+          className="block text-black font-semibold mb-1"
         >
           Description
         </label>
@@ -51,7 +51,7 @@ export default function EditTaskForm({ task }: { task: TaskDocument }) {
       <div>
         <label
           htmlFor="dueDate"
-          className="block text-white font-semibold mb-1"
+          className="block text-black font-semibold mb-1"
         >
           Due Date
         </label>
@@ -66,12 +66,6 @@ export default function EditTaskForm({ task }: { task: TaskDocument }) {
       </div>
 
       <div>
-        <label
-          htmlFor="isCompleted"
-          className="block text-white font-semibold mb-2"
-        >
-          isCompleted
-        </label>
         <div className="flex items-center gap-4">
           <label className="flex items-center gap-2 cursor-pointer">
             <input

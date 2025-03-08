@@ -5,7 +5,10 @@ import { FormState, registerAction } from "@/lib/action";
 
 export default function RegisterForm() {
   const initialState: FormState = { error: "" };
-  const [state, formAction] = useActionState(registerAction, initialState);
+  const [state, formAction, pending] = useActionState(
+    registerAction,
+    initialState,
+  );
 
   return (
     <form action={formAction} className="space-y-4">
@@ -55,9 +58,14 @@ export default function RegisterForm() {
 
       <button
         type="submit"
-        className="w-full bg-black text-white py-3 rounded-lg font-semibold text-lg hover:bg-gray-700 transition"
+        disabled={pending}
+        className={`w-full py-3 rounded-lg font-semibold text-lg transition ${
+          pending
+            ? "bg-gray-400 text-white cursor-not-allowed"
+            : "bg-black text-white hover:bg-gray-700"
+        }`}
       >
-        Register
+        {pending ? "Registering..." : "Register"}
       </button>
     </form>
   );

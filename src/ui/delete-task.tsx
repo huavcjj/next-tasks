@@ -1,13 +1,16 @@
 "use client";
 
-import { deleteTask, FormState } from "@/lib/action";
+import { deleteTaskAction, FormState } from "@/lib/action";
 import React, { useActionState } from "react";
 import { TrashIcon } from "@heroicons/react/24/outline";
 
 export function TaskDeleteButton({ id }: { id: string }) {
   const initialState: FormState = { error: "" };
-  const deleteTaskWithId = deleteTask.bind(null, initialState, id);
-  const [state, formAction] = useActionState(deleteTaskWithId, initialState);
+  const deleteTaskActionWithId = deleteTaskAction.bind(null, initialState, id);
+  const [state, formAction] = useActionState(
+    deleteTaskActionWithId,
+    initialState,
+  );
 
   return (
     <form action={formAction}>

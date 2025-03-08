@@ -12,6 +12,7 @@ const nextConfig: NextConfig = {
       fullUrl: true,
     },
   },
+
   // experimental: {
   //   ppr: "incremental",
   // },

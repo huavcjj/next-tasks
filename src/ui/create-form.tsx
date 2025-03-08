@@ -1,11 +1,14 @@
 "use client";
 
-import { createTask, FormState } from "@/lib/action";
+import { createTaskAction, FormState } from "@/lib/action";
 import { useActionState } from "react";
 
 export default function CreateTaskForm() {
   const initialState: FormState = { error: "" };
-  const [state, formAction, pending] = useActionState(createTask, initialState);
+  const [state, formAction, pending] = useActionState(
+    createTaskAction,
+    initialState,
+  );
 
   return (
     <form action={formAction} className="space-y-6">

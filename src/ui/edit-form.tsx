@@ -1,12 +1,15 @@
 "use client";
 
 import { TaskDocument } from "@/lib/definitions";
-import { FormState, updateTask } from "@/lib/action";
+import { FormState, updateTaskAction } from "@/lib/action";
 import { useActionState } from "react";
 
 export default function EditTaskForm({ task }: { task: TaskDocument }) {
   const initialState: FormState = { error: "" };
-  const [state, formAction, pending] = useActionState(updateTask, initialState);
+  const [state, formAction, pending] = useActionState(
+    updateTaskAction,
+    initialState,
+  );
 
   return (
     <form action={formAction} className="space-y-6">

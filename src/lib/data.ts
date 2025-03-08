@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import { TaskDocument } from "@/lib/definitions";
+import { cookies } from "next/headers";
 
 export async function connectDb() {
   try {
@@ -18,12 +19,20 @@ export async function connectDb() {
 
 export async function fetchTasks(): Promise<TaskDocument[]> {
   try {
+    const token = (await cookies()).get("token")?.value;
+
+    if (!token) {
+      console.error("No token found in cookies");
+    }
+
     const response = await fetch(`${process.env.API_URL}/tasks`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
       },
-      cache: "force-cache",
+      credentials: "include",
+      cache: "no-cache",
     });
 
     const data = await response.json();
@@ -36,10 +45,15 @@ export async function fetchTasks(): Promise<TaskDocument[]> {
 
 export async function fetchTaskById(id: string): Promise<TaskDocument> {
   try {
+    const token = (await cookies()).get("token")?.value;
+    if (!token) {
+      console.error("No token found in cookies");
+    }
     const response = await fetch(`${process.env.API_URL}/tasks/${id}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
       },
       cache: "force-cache",
     });

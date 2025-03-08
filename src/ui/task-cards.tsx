@@ -1,7 +1,7 @@
 import { TaskEditButton } from "@/ui/task-buttons";
 import { TaskDeleteButton } from "@/ui/delete-task";
 
-export default async function TaskCard({
+export default async function TaskCards({
   id,
   title,
   description,

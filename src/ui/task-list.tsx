@@ -1,4 +1,4 @@
-import TaskCard from "@/ui/task-card";
+import TaskCards from "@/ui/task-cards";
 import { TaskDocument } from "@/lib/definitions";
 import { fetchTasks } from "@/lib/data";
 import TaskSkeleton from "@/ui/skeletons";
@@ -11,7 +11,7 @@ export async function TaskList() {
     <Suspense fallback={<TaskSkeleton count={tasks.length} />}>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-4 sm:p-6">
         {tasks.map((task) => (
-          <TaskCard
+          <TaskCards
             key={task._id}
             id={task._id}
             title={task.title}
@@ -33,7 +33,7 @@ export async function TaskListIsCompleted() {
     <Suspense fallback={<TaskSkeleton count={filteredTasks.length} />}>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-4 sm:p-6">
         {filteredTasks.map((task: TaskDocument) => (
-          <TaskCard
+          <TaskCards
             key={task._id}
             id={task._id}
             title={task.title}
@@ -55,7 +55,7 @@ export async function TaskListNotCompleted() {
     <Suspense fallback={<TaskSkeleton count={filteredTasks.length} />}>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-4 sm:p-6">
         {filteredTasks.map((task: TaskDocument) => (
-          <TaskCard
+          <TaskCards
             key={task._id}
             id={task._id}
             title={task.title}

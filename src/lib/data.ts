@@ -23,7 +23,7 @@ export async function fetchTasks(): Promise<TaskDocument[]> {
       headers: {
         "Content-Type": "application/json",
       },
-      cache: "no-store",
+      cache: "force-cache",
     });
 
     const data = await response.json();
@@ -41,7 +41,7 @@ export async function fetchTaskById(id: string): Promise<TaskDocument> {
       headers: {
         "Content-Type": "application/json",
       },
-      cache: "no-store",
+      cache: "force-cache",
     });
 
     const data = await response.json();

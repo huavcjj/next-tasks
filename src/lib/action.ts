@@ -24,7 +24,7 @@ export async function createTask(state: FormState, formData: FormData) {
     console.error("Error creating task:", error);
     return { error: "Failed to create task" };
   }
-
+  revalidatePath("/tasks");
   redirect("/tasks");
 }
 

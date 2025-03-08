@@ -137,7 +137,6 @@ export async function registerAction(state: FormState, formData: FormData) {
     return { error: "Registration failed" };
   }
 
-  revalidatePath("/tasks");
   redirect("/tasks");
 }
 
@@ -172,6 +171,5 @@ export async function loginAction(state: FormState, formData: FormData) {
     return { error: "Login failed" };
   }
 
-  revalidatePath("/tasks");
   redirect("/tasks");
 }

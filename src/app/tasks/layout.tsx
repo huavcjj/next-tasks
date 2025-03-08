@@ -1,6 +1,8 @@
 import React from "react";
 import NavLinks from "@/ui/nav-links";
 
+// export const experimental_ppr = true
+
 export default function Layout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
